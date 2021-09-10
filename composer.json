@@ -1,0 +1,42 @@
+
+{
+    "name": "kubeecms/kcms-optimizations",
+    "description": "Lightweight performance plugin developed to speed up your site...",
+    "keywords": ["kcms-kui", "kui", "skin", "kubeecms", "network", "administration", "menu", "kcms", "kubee"],
+    "type": "wordpress-plugin",
+    "config": {
+		"sort-packages": true,
+		"process-timeout": 0
+	},
+    "homepage": "https://github.com/KubeeCMS/kcms-optimizations/",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+          "name": "KubeeCMS",
+          "homepage": "https://github.com/KubeeCMS/kcms-optimizations/",
+          "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/KubeeCMS/kcms-optimizations/issues/",
+        "source": "https://github.com/KubeeCMS/kcms-optimizations/"
+    },
+    "minimum-stability": "dev",    
+	"require": {
+		"php": ">=8.0",
+		"composer/installers": "^1.11",
+		"deliciousbrains/wp-background-processing": "^1.02",
+        "psr/cache": "^3.0",
+        "psr/container": "^2.0"
+	},
+	"require-dev": {
+		"php": "^7 || ^8",
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+        "squizlabs/php_codesniffer": "^3.6.0"
+	},
+	"autoload": {
+		"classmap": [
+			"inc/classes"
+		]
+	}
+}
