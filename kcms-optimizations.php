@@ -2,7 +2,7 @@
 /*
 Plugin Name: Kcms Optimizations
 Plugin URI: https://github.com/KubeeCMS/kcms-optimizations/
-Description: Lightweight performance plugin developed to speed up your site.
+Description: Performance plugin developed to speed up your site.
 Version: 1.7.8
 Author: KubeeCMS
 Author URI: https://github.com/KubeeCMS/
