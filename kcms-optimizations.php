@@ -3,7 +3,7 @@
 Plugin Name: Kcms Optimizations
 Plugin URI: https://github.com/KubeeCMS/kcms-optimizations/
 Description: Lightweight performance plugin developed to speed up your site.
-Version: 1.7.7
+Version: 1.7.8
 Author: KubeeCMS
 Author URI: https://github.com/KubeeCMS/
 License: GPLv2 or later
@@ -18,7 +18,7 @@ Domain Path: /languages
 define('PERFMATTERS_STORE_URL', 'https://perfmatters.io/');
 define('PERFMATTERS_ITEM_ID', 696);
 define('PERFMATTERS_ITEM_NAME', 'perfmatters');
-define('PERFMATTERS_VERSION', '1.7.7');
+define('PERFMATTERS_VERSION', '1.7.8');
 $host = parse_url(get_site_url())['host'];
 define('PERFMATTERS_CACHE_DIR', WP_CONTENT_DIR . "/cache/perfmatters/$host/");
 define('PERFMATTERS_CACHE_URL', WP_CONTENT_URL . "/cache/perfmatters/$host/");
@@ -498,5 +498,6 @@ require_once 'inc/classes/Config.php';
 require_once 'inc/classes/Buffer.php';
 require_once 'inc/classes/Fonts.php';
 require_once 'inc/classes/CDN.php';
+require_once 'inc/classes/Images.php';
 Perfmatters\Config::init();
 Perfmatters\Buffer::init();

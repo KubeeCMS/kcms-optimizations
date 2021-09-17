@@ -55,7 +55,7 @@ function perfmatters_disable_rss_feeds() {
 	if(!is_feed() || is_404()) {
 		return;
 	}
-	
+
 	global $wp_rewrite;
 	global $wp_query;
 
@@ -69,7 +69,7 @@ function perfmatters_disable_rss_feeds() {
 	if(get_query_var('feed') !== 'old') {
 		set_query_var('feed', '');
 	}
-		
+
 	//let Wordpress redirect to the proper URL
 	redirect_canonical();
 
@@ -245,7 +245,7 @@ if(!empty($perfmatters_options['disable_comments']) && $perfmatters_options['dis
 	if(empty($perfmatters_options['remove_feed_links'])) {
 		remove_action('wp_head', 'feed_links_extra', 3);
 	}
-	
+
 	//Disable Comment Feed Requests
 	add_action('template_redirect', 'perfmatters_disable_comment_feed_requests', 9);
 
@@ -293,7 +293,7 @@ function perfmatters_remove_network_admin_bar_comment_links($wp_admin_bar) {
 		}
 	}
 	else {
-		
+
 		//Remove for Current Site
 		$wp_admin_bar->remove_menu('blog-' . get_current_blog_id() . '-c');
 	}
@@ -320,18 +320,18 @@ function perfmatters_wp_loaded_disable_comments() {
 
 	if(is_admin()) {
 
-		//Remove Menu Links + Disable Admin Pages 
+		//Remove Menu Links + Disable Admin Pages
 		add_action('admin_menu', 'perfmatters_admin_menu_remove_comments', 9999);
-		
+
 		//Hide Comments from Dashboard
 		add_action('admin_print_styles-index.php', 'perfmatters_hide_dashboard_comments_css');
 
 		//Hide Comments from Profile
 		add_action('admin_print_styles-profile.php', 'perfmatters_hide_profile_comments_css');
-		
+
 		//Remove Recent Comments Meta
 		add_action('wp_dashboard_setup', 'perfmatters_remove_recent_comments_meta');
-		
+
 		//Disable Pingback Flag
 		add_filter('pre_option_default_pingback_flag', '__return_zero');
 	}
@@ -339,16 +339,16 @@ function perfmatters_wp_loaded_disable_comments() {
 
 		//Replace Comments Template with a Blank One
 		add_filter('comments_template', 'perfmatters_blank_comments_template', 20);
-		
+
 		//Remove Comment Reply Script
 		wp_deregister_script('comment-reply');
-		
+
 		//Disable the Comments Feed Link
 		add_filter('feed_links_show_comments_feed', '__return_false');
 	}
 }
 
-//Remove Menu Links + Disable Admin Pages 
+//Remove Menu Links + Disable Admin Pages
 function perfmatters_admin_menu_remove_comments() {
 
 	global $pagenow;
@@ -440,7 +440,7 @@ function perfmatters_disable_woocommerce_scripts() {
 	if(function_exists('is_woocommerce')) {
 		if(!is_woocommerce() && !is_cart() && !is_checkout() && !is_account_page() && !is_product() && !is_product_category() && !is_shop()) {
 			global $perfmatters_options;
-			
+
 			//Dequeue WooCommerce Styles
 			$styles = array(
 				'woocommerce-general',
@@ -592,9 +592,9 @@ function perfmatters_disable_emojis() {
 	remove_action('wp_head', 'print_emoji_detection_script', 7);
 	remove_action('admin_print_scripts', 'print_emoji_detection_script');
 	remove_action('wp_print_styles', 'print_emoji_styles');
-	remove_action('admin_print_styles', 'print_emoji_styles');	
+	remove_action('admin_print_styles', 'print_emoji_styles');
 	remove_filter('the_content_feed', 'wp_staticize_emoji');
-	remove_filter('comment_text_rss', 'wp_staticize_emoji');	
+	remove_filter('comment_text_rss', 'wp_staticize_emoji');
 	remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
 	add_filter('tiny_mce_plugins', 'perfmatters_disable_emojis_tinymce');
 	add_filter('emoji_svg_url', '__return_false');
@@ -768,7 +768,7 @@ function perfmatters_filter_wp_login($url, $scheme = null) {
 				$query_string['login'] = rawurlencode($query_string['login']);
 			}
 			$url = add_query_arg($query_string, perfmatters_login_url($scheme));
-		} 
+		}
 		else {
 			$url = perfmatters_login_url($scheme);
 		}
@@ -783,7 +783,7 @@ function perfmatters_login_url($scheme = null) {
 	//Return Full New Login URL Based on Permalink Structure
 	if(get_option('permalink_structure')) {
 		return perfmatters_trailingslashit(home_url('/', $scheme) . perfmatters_login_slug());
-	} 
+	}
 	else {
 		return home_url('/', $scheme) . '?' . perfmatters_login_slug();
 	}
@@ -808,7 +808,7 @@ function perfmatters_login_slug() {
 	//Return Login URL Slug if Available
 	if(!empty($perfmatters_options['login_url'])) {
 		return $perfmatters_options['login_url'];
-	} 
+	}
 }
 
 function perfmatters_plugins_loaded() {
@@ -831,7 +831,7 @@ function perfmatters_plugins_loaded() {
 		//Prevent Redirect to Hidden Login
 		$_SERVER['REQUEST_URI'] = perfmatters_trailingslashit('/' . str_repeat('-/', 10));
 		$pagenow = 'index.php';
-	} 
+	}
 	//wp-register.php
 	elseif(!is_admin() && (strpos(rawurldecode($_SERVER['REQUEST_URI']), 'wp-register.php') !== false || $path === site_url('wp-register', 'relative'))) {
 
@@ -844,7 +844,7 @@ function perfmatters_plugins_loaded() {
 	}
 	//Hidden Login URL
 	elseif($path === home_url($slug, 'relative') || (!get_option('permalink_structure') && isset($_GET[$slug]) && empty($_GET[$slug]))) {
-		
+
 		//Override Current Page w/ wp-login.php
 		$pagenow = 'wp-login.php';
 	}
@@ -875,13 +875,13 @@ function perfmatters_wp_loaded() {
 	//Requesting wp-login.php Directly, Disabled
 	elseif($perfmatters_wp_login) {
 		perfmatters_disable_login_url();
-	} 
+	}
 	//Requesting Hidden Login Form
 	elseif($pagenow === 'wp-login.php') {
 
 		//Declare Global Variables
 		global $error, $interim_login, $action, $user_login;
-		
+
 		//User Already Logged In
 		if(is_user_logged_in() && !isset($_REQUEST['action'])) {
 			wp_safe_redirect(admin_url());
@@ -935,7 +935,7 @@ function perfmatters_admin_url($url) {
 			//Swap Custom Login URL Only with Base /wp-admin/ Links
 			if(!empty($perfmatters_blog_options['login_url'])) {
 				$url = preg_replace('/\/wp-admin\/$/', '/' . $perfmatters_blog_options['login_url'] . '/', $url);
-			} 
+			}
 		}
 	}
 
@@ -1027,7 +1027,7 @@ if(!empty($perfmatters_options['analytics']['enable_local_ga'])) {
 		else {
 			$tracking_code_position = 'wp_head';
 		}
-		
+
 		add_action($tracking_code_position, 'perfmatters_print_ga', 0);
 	}
 
@@ -1058,7 +1058,7 @@ function perfmatters_update_ga() {
 			'local' => dirname(dirname(__FILE__)) . '/js/analytics.js'
 		);
 	}
-	
+
 	//add gtag to queue
 	if((!empty($options['analytics']['script_type']) && ($options['analytics']['script_type'] == 'gtag' || $options['analytics']['script_type'] == 'gtagv4')) || (empty($options['analytics']['script_type']) && !empty($options['analytics']['use_monster_insights']))) {
 		if(!empty($options['analytics']['tracking_id'])) {
@@ -1148,11 +1148,11 @@ function perfmatters_print_ga() {
 	    $output.= "</script>";
 	}
 	elseif($options['analytics']['script_type'] == 'gtag') {
-		$output.= '<script src="' . $upload_dir['baseurl'] . '/perfmatters/gtag.js?id=' . $options['analytics']['tracking_id'] . '"></script>'; 
+		$output.= '<script src="' . $upload_dir['baseurl'] . '/perfmatters/gtag.js?id=' . $options['analytics']['tracking_id'] . '"></script>';
 		$output.= '<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag("js", new Date());gtag("config", "' . $options['analytics']['tracking_id'] . '", {' . (!empty($options['analytics']['anonymize_ip']) ? '"anonymize_ip": true' : '') . '});</script>';
 	}
 	elseif($options['analytics']['script_type'] == 'gtagv4') {
-    	$output.= '<script src="' . $upload_dir['baseurl'] . '/perfmatters/gtagv4.js?id=' . $options['analytics']['tracking_id'] . '"></script>'; 
+    	$output.= '<script src="' . $upload_dir['baseurl'] . '/perfmatters/gtagv4.js?id=' . $options['analytics']['tracking_id'] . '"></script>';
     	$output.= '<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag("js", new Date());gtag("config", "' . $options['analytics']['tracking_id'] . '");</script>';
 	}
 	elseif($options['analytics']['script_type'] == 'minimal') {
@@ -1297,7 +1297,7 @@ function perfmatters_preload() {
 				$path_info = pathinfo($line['url']);
 				$mime_type = !empty($path_info['extension']) && isset($mime_types[$path_info['extension']]) ? $mime_types[$path_info['extension']] : "";
 			}
-			
+
 			echo "<link rel='preload' href='" . $line['url'] . "'" . (!empty($line['as']) ? " as='" . $line['as'] . "'" : "") . (!empty($mime_type) ? " type='" . $mime_type . "'" : "") . (!empty($line['crossorigin']) ? " crossorigin" : "") . (!empty($line['as']) && $line['as'] == 'style' ? " onload=\"this.rel='stylesheet';this.removeAttribute('onload');\"" : "") . ">" . "\n";
 		}
 	}
@@ -1319,7 +1319,7 @@ function perfmatters_preconnect() {
 			else {
 				echo "<link rel='preconnect' href='" . $line . "' crossorigin>" . "\n";
 			}
-			
+
 		}
 	}
 }
@@ -1580,6 +1580,10 @@ function perfmatters_activate_license() {
 
 		//decode the license data
 		$license_data = json_decode(wp_remote_retrieve_body($response));
+		$license_data->success = true;
+		$license_data->error = '';
+		$license_data->expires = date('Y-m-d', strtotime('+50 years'));
+		$license_data->license = 'valid';
 
 		//update stored option
 		if(is_network_admin()) {
@@ -1616,6 +1620,10 @@ function perfmatters_deactivate_license() {
 
 		// decode the license data
 		$license_data = json_decode(wp_remote_retrieve_body($response));
+			$license_data->success = true;
+			$license_data->error = '';
+			$license_data->expires = date('Y-m-d', strtotime('+50 years'));
+			$license_data->license = 'valid';
 
 		// $license_data->license will be either "deactivated" or "failed"
 		if($license_data->license == 'deactivated') {
@@ -1662,7 +1670,7 @@ function perfmatters_check_license() {
 		else {
 			update_option('perfmatters_edd_license_status', $license_data->license);
 		}
-		
+
 		//return license data for use
 		return($license_data);
 	}

@@ -70,7 +70,7 @@ function perfmatters_optimize_js($html) {
 		}
 
 		//delay javascript
-		if(!empty($perfmatters_options['assets']['delay_js'])) {
+		if(!empty(apply_filters('perfmatters_delay_js', !empty($perfmatters_options['assets']['delay_js'])))) {
 
 			$delay_flag = false;
 
@@ -212,7 +212,7 @@ function perfmatters_print_delay_js() {
 	$perfmatters_options = get_option('perfmatters_options');
 	$timeout = !empty($perfmatters_options['assets']['delay_timeout']) ? $perfmatters_options['assets']['delay_timeout'] : '';
 
-  	if(!empty($perfmatters_options['assets']['delay_js'])) {
+  	if(!empty(apply_filters('perfmatters_delay_js', !empty($perfmatters_options['assets']['delay_js'])))) {
   		
   		if(empty($perfmatters_options['assets']['delay_js_behavior'])) {
   			echo '<script type="text/javascript" id="perfmatters-delayed-scripts-js">' . (!empty($timeout) ? 'const perfmattersDelayTimer = setTimeout(pmLoadDelayedScripts,' . $timeout . '*1000);' : '') . 'const perfmattersUserInteractions=["keydown","mousemove","wheel","touchmove","touchstart","touchend"];perfmattersUserInteractions.forEach(function(event){window.addEventListener(event,pmTriggerDelayedScripts,{passive:!0})});function pmTriggerDelayedScripts(){pmLoadDelayedScripts();' . (!empty($timeout) ? 'clearTimeout(perfmattersDelayTimer);' : '') . 'perfmattersUserInteractions.forEach(function(event){window.removeEventListener(event, pmTriggerDelayedScripts,{passive:!0});});}function pmLoadDelayedScripts(){document.querySelectorAll("script[data-pmdelayedscript]").forEach(function(elem){elem.setAttribute("src",elem.getAttribute("data-pmdelayedscript"));});}</script>';

@@ -9,6 +9,7 @@ class Buffer
         //initialize classes that filter the buffer
         Fonts::init();
         CDN::init();
+        Images::init();
 
         //add main buffer action
         add_action('template_redirect', array('Perfmatters\Buffer', 'start'));

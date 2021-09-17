@@ -56,6 +56,30 @@ if(isset($_POST['perfmatters_script_manager_settings_reset'])) {
 	delete_option('perfmatters_script_manager_settings');
 }
 
+//global trash
+if(isset($_POST['pmsm_global_trash'])) {
+
+	$trash = explode("|", $_POST['pmsm_global_trash']);
+
+	if(count($trash) == 4) {
+		list($category, $type, $script, $detail) = $trash;
+
+
+		$options = get_option('perfmatters_script_manager');
+
+		unset($options[$category][$type][$script][$detail]);
+
+		if($category == 'disabled' && $detail == 'everywhere') {
+			unset($options['enabled'][$type][$script]);
+		}
+
+		//clean up the options array before saving
+		perfmatters_script_manager_filter_options($options);
+
+		update_option('perfmatters_script_manager', $options);
+	}
+}
+
 //load script manager settings
 global $perfmatters_script_manager_settings;
 $perfmatters_script_manager_settings = get_option('perfmatters_script_manager_settings');
@@ -217,6 +241,8 @@ echo "<div id='perfmatters-script-manager-wrapper' " . (isset($_GET['perfmatters
 					//global view tab
 					elseif($pmsm_tab == 'global') {
 
+						echo "<input type='hidden' name='tab' value='global' />";
+
 						//title bar
 						echo "<div class='perfmatters-script-manager-title-bar'>";
 							echo "<h1>" . __('Global View', 'perfmatters') . "</h1>";
@@ -235,6 +261,7 @@ echo "<div id='perfmatters-script-manager-wrapper' " . (isset($_GET['perfmatters
 													echo "<th>" . __('Type', 'perfmatters') . "</th>";
 													echo "<th>" . __('Script', 'perfmatters') . "</th>";
 													echo "<th>" . __('Setting', 'perfmatters') . "</th>";
+													echo "<th style='width: 20px;'></th>";
 												echo "</tr>";
 											echo "</thead>";
 											echo "<tbody>";
@@ -277,6 +304,12 @@ echo "<div id='perfmatters-script-manager-wrapper' " . (isset($_GET['perfmatters
 																			elseif($detail == "user_status") {
 																				echo " (" . $values . ")";
 																			}
+																		echo "</td>";
+																		echo "<td>";
+																			echo "<button class='pmsm-action-button' name='pmsm_global_trash' value='" . $category . "|" . $type . "|" . $script . "|" . $detail . "' onClick=\"return confirm('Are you sure you want to delete this option?');\">";
+																				echo "<span class='dashicons dashicons-trash'></span>";
+																			echo "</button>";
+
 																		echo "</td>";
 																	echo "</tr>";
 																}

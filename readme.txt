@@ -1,7 +1,7 @@
-=== Kcms Optimizations ===
+=== Perfmatters ===
 Contributors:
-Donate link: https://github.com/KubeeCMS
-Tags: Kcms Optimizations
+Donate link: https://perfmatters.io
+Tags: perfmatters
 Requires at least: 4.7
 Requires PHP: 7.0
 Tested up to: 5.8
@@ -9,11 +9,11 @@ Stable tag: 1.7.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Kcms Optimizations is a lightweight performance plugin developed to speed up your WordPress site.
+Perfmatters is a lightweight performance plugin developed to speed up your WordPress site.
 
 == Description ==
 
-[Kcms Optimizations](https://Kcms Optimizations.io/) is a lightweight web performance plugin designed to help increase Google Core Web Vitals scores and fine-tune how assets load on your site. 
+[Perfmatters](https://perfmatters.io/) is a lightweight web performance plugin designed to help increase Google Core Web Vitals scores and fine-tune how assets load on your site. 
 
 = Features =
 
@@ -30,20 +30,28 @@ Kcms Optimizations is a lightweight performance plugin developed to speed up you
 
 = Documentation =
 
-Check out our [documentation](https://Kcms Optimizations.io/docs/) for more information on how to use Kcms Optimizations.
+Check out our [documentation](https://perfmatters.io/docs/) for more information on how to use Perfmatters.
 
 == Changelog ==
 
+= 1.7.8 - 09.16.2021 =
+* Added new option to Add Missing Image Dimensions.
+* Added the ability to delete individual Script Manager options from the Global View.
+* Added new perfmatters_delay_js filter.
+* Updated EDD plugin updater class to version 1.9.0.
+* Translation updates.
+
 = 1.7.7 - 08.25.2021 =
 * Fixed a PHP warning related to JavaScript deferral for specific configurations.
+* Fixed an issue with lazy loading exclusions not being loaded correctly in some cases.
 
 = 1.7.6 - 08.24.2021 =
 * Added new Delay Behavior dropdown with a new option to Delay All Scripts.
-* Added new Lazy Loading Threshold option and adjusted the default value if not set.
+* Added new Lazy Loading Threshold option and adjusted the default value if not set to improve performance.
 * Added confirmation message when manually running the database optimization tool.
 * Updated disable emoji function to get rid of a PHP notice.
 * Added additional check to MU Mode to only filter GET requests.
-* Added new Kcms Optimizations_defer_js filter.
+* Added new perfmatters_defer_js filter.
 * Fixed an issue where Instant Page was attempting to run on the new widgets screen in WordPress 5.8.
 * Fixed an issue with Local Google Fonts where certain invalid font URLs would still attempt to be downloaded and served.
 * Removed BETA tag from fonts section.
@@ -67,7 +75,7 @@ Check out our [documentation](https://Kcms Optimizations.io/docs/) for more info
 * Fixed an issue where the Customizer was getting certain optimizations applied.
 * Fixed an issue where the Disable Embeds toggle was interfering with responsive video styles.
 * Script Manager UI fixes.
-* Updated uninstall function to remove Kcms Optimizations cache folder.
+* Updated uninstall function to remove Perfmatters cache folder.
 * Added readme.txt file.
 
 = 1.7.4 – 06.08.2021 =
@@ -84,8 +92,8 @@ Check out our [documentation](https://Kcms Optimizations.io/docs/) for more info
 * Added new Local Google Fonts option which will attempt to download any Google Font files and serve them from your local server or CDN.
 * Integrated new universal HTML buffer library to help going forward with plugin features that manipulate DOM elements.
 * Migrated CDN Rewrite feature to the universal buffer class.
-* Added new Kcms Optimizations_delayed_scripts filter to modify the Delay JavaScript input array before any scripts are delayed.
-* Added new Kcms Optimizations_preload filter to modify the Preloads data array before anything is printed.
+* Added new perfmatters_delayed_scripts filter to modify the Delay JavaScript input array before any scripts are delayed.
+* Added new perfmatters_preload filter to modify the Preloads data array before anything is printed.
 * Made some compatibility improvements to the inline lazy loading JavaScript.
 * Added attributes to delayed scripts to exclude them from being picked up by Litespeed Cache.
 * Added exclusion for SiteGround Optimizer to the main Script Manager JavaScript file.
@@ -126,7 +134,7 @@ Check out our [documentation](https://Kcms Optimizations.io/docs/) for more info
 * Translation file updates.
 
 = 1.6.7 – 03.02.2021 =
-* Added new tool to Purge Kcms Optimizations Meta Options.
+* Added new tool to Purge Perfmatters Meta Options.
 * Added new Exclude Post IDs input for existing Disable Google Maps option.
 * Added new gtag.js option to local analytics script type selection.
 * Added new CDN URL input to local analytics options when using gtag.js.
@@ -144,7 +152,7 @@ Check out our [documentation](https://Kcms Optimizations.io/docs/) for more info
 * Added new Script Manager exception to select logged in or logged out users.
 * Added new option in Script Manager settings to Display Dependencies.
 * Added total plugin sizes in the Script Manager.
-* Added new Kcms Optimizations_lazyload_threshold filter to adjust the distance at which lazy elements are loaded.
+* Added new perfmatters_lazyload_threshold filter to adjust the distance at which lazy elements are loaded.
 * Multiple Script Manager style and UI improvements.
 * Fixed an issue where MU mode script was attempting to run on wp-login.php.
 * Multiple page builder compatibility fixes.
@@ -157,7 +165,7 @@ Check out our [documentation](https://Kcms Optimizations.io/docs/) for more info
 * Added new option to Delay JavaScript from loading until user interaction.
 * Added new gtag.js v4 option to local analytics.
 * Added new built-in option to Exclude from Lazy Loading which can be used in addition to the existing filter.
-* Add new Kcms Optimizations_lazyload_youtube_thumbnail_resolution filter to adjust YouTube preview thumbnail quality.
+* Add new perfmatters_lazyload_youtube_thumbnail_resolution filter to adjust YouTube preview thumbnail quality.
 * Optimized analytics updater function.
 * Updated EDD plugin updater class which will now allow for WordPress auto-update support.
 * Removed option to Defer Inline JavaScript which is now being replaced by the new Delay JavaScript option.
@@ -168,7 +176,7 @@ Check out our [documentation](https://Kcms Optimizations.io/docs/) for more info
 
 = 1.6.4 – 10.29.2020 =
 * Fixed an issue that was causing the Reset Script Manager button to not work correctly.
-* Fixed an issue where the Kcms Optimizations meta box wouldn’t display if only using Lazy Loading.
+* Fixed an issue where the Perfmatters meta box wouldn’t display if only using Lazy Loading.
 * Adjusted Script Manager hook priority for better compatibility.
 * Added additional checks to MU Mode plugin file to prevent it from interfering with certain REST API requests. (Fixes a bug when running the Yoast SEO data indexer.)
 * Added additional checks to confirm user functions are available before verifying admin status.
@@ -205,14 +213,14 @@ Check out our [documentation](https://Kcms Optimizations.io/docs/) for more info
 * Fixed an issue causing Preload and Preconnect settings to not save correctly in some cases.
 
 = 1.6.0 – 08.17.2020 =
-* Added a filter to disable WordPress’ native lazy loading when Kcms Optimizations’ lazy loading is active.
+* Added a filter to disable WordPress’ native lazy loading when Perfmatters’ lazy loading is active.
 * Adjusted Script Manager styles to more effectively overlay the entire page while still allowing admin bar functions to be fully available.
 * Fixed an undefined index notice that was appearing on specific lazy loading and script manager functions.
 * Updated translation files.
 
 = 1.5.9 – 08.12.2020 =
 * Added new Preloading section in the Extras tab, with new options for Instant Page and Preload.
-* Added new Kcms Optimizations_lazyload_forced_attributes filter to allow for matched elements to be skipped when checking for exclusions.
+* Added new perfmatters_lazyload_forced_attributes filter to allow for matched elements to be skipped when checking for exclusions.
 * Added support for WooCommerce Shop page to show up as a Current URL option in the Script Manager.
 * Added exclusions for REST and AJAX requests to MU Mode function.
 * Fixed a bug that was causing the MU Mode function to still run even if the Script Manager was disabled.
@@ -252,7 +260,7 @@ Check out our [documentation](https://Kcms Optimizations.io/docs/) for more info
 = 1.5.4 – 05.26.2020 =
 * Added additional tooltip warning text to the MU Mode toggle.
 * Added mu_mode=off URL parameter to force the page to load with MU Mode settings disabled.
-* Added an additional check to make sure MU Mode settings don’t run if the base Kcms Optimizations plugin is not activated.
+* Added an additional check to make sure MU Mode settings don’t run if the base Perfmatters plugin is not activated.
 
 = 1.5.3 – 05.25.2020 =
 * Added new MU Mode (BETA) feature in the Script Manager which can be used to disable plugins per page.
@@ -304,9 +312,9 @@ Check out our [documentation](https://Kcms Optimizations.io/docs/) for more info
 = 1.4.5 – 12.08.2019 =
 * Updated Disable Google Maps and Disable Google Fonts toggles to not run in WP Admin.
 * Turned off native lazy loading by default and added new option to Use Native.
-* Added Kcms Optimizations_lazyload_excluded_attributes filter which allows for an array of attribute strings to be given that if found will exclude the matched image/s from lazy loading.
+* Added perfmatters_lazyload_excluded_attributes filter which allows for an array of attribute strings to be given that if found will exclude the matched image/s from lazy loading.
 * Made some compatibility improvements to the Script Manager function that gets the ID of the current post.
-* Added Kcms Optimizations_get_current_ID filter which allows the user to extend or modify the functionality of the Script Manager’s current ID function.
+* Added perfmatters_get_current_ID filter which allows the user to extend or modify the functionality of the Script Manager’s current ID function.
 
 = 1.4.4 – 10.20.2019 =
 * Fixed undefined index PHP Notice coming from the Preconnect settings display function.
@@ -322,7 +330,7 @@ Check out our [documentation](https://Kcms Optimizations.io/docs/) for more info
 
 = 1.4.1 – 08.18.2019 =
 * New addition to the Preconnect option, you can now choose to whether or not to add the crossorigin property for each Preconnect URL.
-* Optimization to the loading of Kcms Optimizations admin scripts + styles.
+* Optimization to the loading of Perfmatters admin scripts + styles.
 * Added additional Script Manager styles for better compatibility.
 * Added an additional function for the Custom Login URL to help rewrite certain wp-admin links in specific multisite setups.
 * Reorganized plugin action links in the plugins table.
@@ -344,7 +352,7 @@ Check out our [documentation](https://Kcms Optimizations.io/docs/) for more info
 
 = 1.3.7 – 05.29.2019 =
 * Added links to the Script Manager from the posts list page and post edit page which will take you to the front end and load the Script Manager for the corresponding post.
-* Added warning notices for both WP_POST_REVISIONS and AUTOSAVE_INTERVAL if they are set in Kcms Optimizations while also defined elsewhere.
+* Added warning notices for both WP_POST_REVISIONS and AUTOSAVE_INTERVAL if they are set in Perfmatters while also defined elsewhere.
 
 = 1.3.6 – 04.21.2019 =
 * Added new option to Disable Google Fonts.
@@ -385,7 +393,7 @@ Check out our [documentation](https://Kcms Optimizations.io/docs/) for more info
 = 1.2.9 – 10.28.2018 =
 * Updated uninstallation function to account for new Script Manager settings.
 * Updated Google Analytics Disable Display Features function to work correctly with Google’s new format.
-* Added support to Use MonsterInsights along with Kcms Optimizations local analytics (analytics.js) hosting functionality. 🎉
+* Added support to Use MonsterInsights along with Perfmatters local analytics (analytics.js) hosting functionality. 🎉
 * Added new option in Script Manager settings to Display Archives which will allow you to selectively enable scripts on generated archive pages.
 
 = 1.2.8 – 09.23.2018 =
@@ -398,7 +406,7 @@ Check out our [documentation](https://Kcms Optimizations.io/docs/) for more info
 * Small patch to check for a required WP function and include core file if necessary for some setups.
 
 = 1.2.6 – 09.09.2018 =
-* All new Script Manager! View updated documentation at https://Kcms Optimizations.io/docs/disable-scripts-per-post-page/.
+* All new Script Manager! View updated documentation at https://perfmatters.io/docs/disable-scripts-per-post-page/.
 * Fix to remove Emoji DNS Prefetch when Emojis are disabled
 
 = Version 1.2.5 – 07.31.2018 =
@@ -408,7 +416,7 @@ Check out our [documentation](https://Kcms Optimizations.io/docs/) for more info
 = 1.2.4 – 07.15.2018 =
 * Fixed a bug in the Script Manager that caused Current URL Enable checkboxes to not save properly in certain situations.
 * Updated EDD license functions to process proper SSL verification when calling the WordPress HTTP API.
-* Updated Kcms Optimizations_default_options array with new options from recent updates.
+* Updated perfmatters_default_options array with new options from recent updates.
 * Removed BETA tag from Local Analytics option.
 * Added more details to the Script Manager Global Settings to see which post IDs and post types have settings assigned to them.
 * Additional styles added to the Script Manager for better compatibility.
@@ -442,7 +450,7 @@ Check out our [documentation](https://Kcms Optimizations.io/docs/) for more info
 * Props to PDPK di Mauro Panzarola (https://pdpkapp.com) for Italian (it_IT) translation. 👏
 
 = 1.1.9 – 04.16.2018 =
-* Kcms Optimizations is now translation ready! If you are interested in helping out with a translation, please contact us.
+* Perfmatters is now translation ready! If you are interested in helping out with a translation, please contact us.
 * Props to Christian Foellmann (cfoellmann@GitHub) for German (de_DE) translation. 👏
 * Fixed a PHP undefined index warning in the Script Manager.
 * Fixed a bug that was causing issues with the Change Login URL slug when using certain permalink settings.

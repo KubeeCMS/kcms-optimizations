@@ -818,37 +818,20 @@ function perfmatters_settings() {
 
     //lazy load exclusions
     add_settings_field(
-        'lazy_loading_excluded', 
-        perfmatters_title(__('Exclude from Lazy Loading', 'perfmatters'), 'lazy_loading_excluded', 'https://perfmatters.io/docs/lazy-load-wordpress/#exclude'), 
+        'lazy_loading_exclusions', 
+        perfmatters_title(__('Exclude from Lazy Loading', 'perfmatters'), 'lazy_loading_exclusions', 'https://perfmatters.io/docs/lazy-load-wordpress/#exclude'), 
         'perfmatters_print_input', 
         'perfmatters_options', 
         'lazyload', 
         array(
             'section' => 'lazyload',
-            'id' => 'lazy_loading_excluded',
+            'id' => 'lazy_loading_exclusions',
             'input' => 'textarea',
             'textareatype' => 'oneperline',
             'placeholder' => 'example.png',
             'tooltip' => __('Exclude specific elements from lazy loading. Exclude an element by adding the source URL (example.png) or by adding any unique portion of its attribute string (class="example"). Format: one per line', 'perfmatters')
         )
     );
-
-    //Exclude Leading Images
-    /*add_settings_field(
-        'exclude_leading_images', 
-        perfmatters_title(__('Exclude Leading Images', 'perfmatters'), 'exclude_leading_images', 'https://perfmatters.io/docs/lazy-load-wordpress/#exclude-leading-images'), 
-        'perfmatters_print_input', 
-        'perfmatters_options', 
-        'lazyload', 
-        array(
-            'section' => 'lazyload',
-            'id' => 'exclude_leading_images',
-            'input' => 'text',
-            'validate' => '[0-9]',
-            'placeholder' => '0',
-            'tooltip' => __('', 'perfmatters')
-        )
-    );*/
 
     //threshold
     add_settings_field(
@@ -878,6 +861,20 @@ function perfmatters_settings() {
             'section' => 'lazyload',
             'id' => 'lazy_loading_dom_monitoring',
             'tooltip' => __('Watch for changes in the DOM and dynamically lazy load newly added elements.', 'perfmatters')
+        )
+    );
+
+    //image dimensions
+    add_settings_field(
+        'image_dimensions', 
+        perfmatters_title(__('Add Missing Image Dimensions', 'perfmatters'), 'image_dimensions', 'https://perfmatters.io/docs/missing-width-height-images/'), 
+        'perfmatters_print_input', 
+        'perfmatters_options', 
+        'lazyload', 
+        array(
+            'section' => 'lazyload',
+            'id' => 'image_dimensions',
+            'tooltip' => __('Add missing width and height attributes to images.', 'perfmatters')
         )
     );
 
@@ -1911,7 +1908,7 @@ function perfmatters_sanitize_options($values) {
     //textarea inputs with one per line
     $sections_one_per_line = array(
         'lazyload' => array(
-            'lazy_loading_excluded'
+            'lazy_loading_exclusions'
         ),
         'assets' => array(
             'js_exclusions',

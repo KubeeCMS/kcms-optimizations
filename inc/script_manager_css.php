@@ -29,9 +29,13 @@ html, body {
 	box-sizing: border-box;
 	overflow: hidden;
 }
-#perfmatters-script-manager * {
+#perfmatters-script-manager-wrapper * {
 	font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 }
+#perfmatters-script-manager-wrapper .dashicons {
+	font-family: dashicons;
+}
+
 #perfmatters-script-manager a {
 	color: #4A89DD;
 	text-decoration: none;
@@ -263,6 +267,7 @@ html, body {
 	border: none;
 	border-bottom: 1px solid #EDF3F9;
 	background: #ffffff;
+	box-sizing: content-box;
 }
 #perfmatters-script-manager table tbody tr:last-child {
 	border-bottom: 0px;
@@ -619,6 +624,25 @@ html, body {
 	font-size: 12px;
 	padding: 10px 0px 0px 0px;
 	border-top: 1px solid #f8f8f8;
+}
+/*Global View*/
+#pmsm-global-form .perfmatters-script-manager-section tbody tr:hover td {
+	background: #EDF3F9;
+}
+.pmsm-action-button, .pmsm-action-button:hover, .pmsm-action-button:focus, .pmsm-action-button:active {
+	background: none;
+	border: none;
+	padding: 0px;
+	margin: 0px;
+	height: auto;
+	width: auto;
+	line-height: normal;
+}
+.pmsm-action-button .dashicons-trash {
+	color: #ED5464;
+}
+.pmsm-action-button:hover .dashicons-trash {
+	color: #c14552;
 }
 /*Settings View*/
 #script-manager-settings table th {

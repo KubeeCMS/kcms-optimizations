@@ -57,6 +57,7 @@ function perfmatters_lazy_load_buffer($html) {
 
 	//replace image tags
 	if(!empty($perfmatters_options['lazyload']['lazy_loading'])) {
+
 		$html = perfmatters_lazy_load_images($html, $buffer);
 		$html = perfmatters_lazy_load_pictures($html, $buffer);
 		$html = perfmatters_lazy_load_background_images($html, $buffer);
